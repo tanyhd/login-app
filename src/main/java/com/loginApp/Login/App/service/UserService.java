@@ -17,6 +17,7 @@ public class UserService {
     public void saveUser(UserDto userDto) {
         User user = User.builder()
                 .name(userDto.getName())
+                .username(userDto.getUsername())
                 .email(userDto.getEmail())
                 .role(userDto.getRole())
                 .password(passwordEncoder.encode(userDto.getPassword()))

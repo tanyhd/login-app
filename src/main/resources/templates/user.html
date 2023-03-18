@@ -13,7 +13,9 @@
         <div class="col-6 mx-auto">
             <h1>Welcome</h1>
             <h3>User Details</h3>
-            <div class="mt-2">Email: <span sec:authentication="principal.username"/></div>
+            <div class="mt-2">Name: <span sec:authentication="principal.name"/></div>
+            <div class="mt-2">User name: <span sec:authentication="principal.username"/></div>
+            <div class="mt-2">Email: <span sec:authentication="principal.email"/></div>
             <div class="mt-2"> Roles: <span sec:authentication="principal.authorities"/></div>
             <a href="/manager/" sec:authorize="hasAnyAuthority('ROLE_MANAGER')">Manager Link</a>
             <div class="mt-5"><a class="link-primary" th:href="@{/logout}">Logout</a></div>

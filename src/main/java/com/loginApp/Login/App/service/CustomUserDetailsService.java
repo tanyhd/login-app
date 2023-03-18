@@ -1,5 +1,6 @@
 package com.loginApp.Login.App.service;
 
+import com.loginApp.Login.App.model.MyUser;
 import com.loginApp.Login.App.model.Role;
 import com.loginApp.Login.App.model.User;
 import com.loginApp.Login.App.respository.UserRepository;
@@ -21,9 +22,11 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(usernameOrEmail);
         if (user != null) {
-            return new org.springframework.security.core.userdetails.User(user.getEmail(),
+            return new MyUser(user.getUsername(),
                     user.getPassword(),
-                    List.of(new SimpleGrantedAuthority(user.getRole().name())));
+                    List.of(new SimpleGrantedAuthority(user.getRole().name())),
+                    user.getName(),
+                    user.getEmail());
         } else {
             throw new UsernameNotFoundException("Invalid email or password");
         }

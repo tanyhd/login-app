@@ -16,6 +16,8 @@ public class UserDto {
     private Long id;
     @NotEmpty(message = "Enter valid name")
     private String name;
+    @NotEmpty(message = "Enter valid username")
+    private String username;
     @NotEmpty(message = "Enter valid email")
     private String email;
     @NotEmpty(message = "Enter valid password")
