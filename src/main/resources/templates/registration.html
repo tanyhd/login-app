@@ -7,8 +7,11 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet">
 
     <title>Registration</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
+<div th:replace="fragments/navbar :: navbar"></div>
 <div class="container">
     <div class="row mt-5">
         <div class="col-6 mx-auto">
@@ -18,52 +21,54 @@
                     th:action="@{/registration}"
                     th:object="${user}"
             >
-                <h1>Registration Form</h1>
+                <h1>[[#{registration.title}]]</h1>
                 <div th:if="${param.success}">
                     <div class="alert alert-info">
-                        Registration successful !!!
+                        [[#{registration.successful}]]
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="name">Name</label>
+                    <label class="form-label" for="name">[[#{registration.name}]]</label>
                     <input class="form-control" id="name" name="name" type="text">
                     <p class="text-danger" th:errors="*{name}"
                        th:if="${#fields.hasErrors('name')}"></p>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="username">User name</label>
+                    <label class="form-label" for="username">[[#{registration.username}]]</label>
                     <input class="form-control" id="username" name="username" type="username">
                     <p class="text-danger" th:errors="*{username}"
                        th:if="${#fields.hasErrors('username')}"></p>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="email">Email</label>
+                    <label class="form-label" for="email">[[#{registration.email}]]</label>
                     <input class="form-control" id="email" name="email" type="email">
                     <p class="text-danger" th:errors="*{email}"
                        th:if="${#fields.hasErrors('email')}"></p>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="role">Role</label>
+                    <label class="form-label" for="role">[[#{registration.role}]]</label>
                     <select th:field="*{role}" class="form-control" id="role" name="role" type="role">
-                        <option th:value="'ROLE_USER'" th:text="User"></option>
-                        <option th:value="'ROLE_MANAGER'" th:text="Manager"></option>
+                        <option th:value="'ROLE_USER'" th:text="#{registration.roleUser}"></option>
+                        <option th:value="'ROLE_MANAGER'" th:text="#{registration.roleManager}"></option>
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label class="col-sm-2 col-form-label" for="password">Password</label>
+                    <label class="form-label" for="password">[[#{registration.password}]]</label>
                     <input class="form-control" id="password" name="password" type="password">
                     <p class="text-danger" th:errors="*{password}"
                        th:if="${#fields.hasErrors('password')}"></p>
                 </div>
                 <div class="mb-3">
-                    <button class="btn btn-primary mb-3" type="submit">Register</button>
-                    or <a class="link-primary" th:href="@{/login}">Login</a>
+                    <button class="btn btn-primary mb-3" type="submit">[[#{login.registerButton}]]</button>
+                    [[#{login.or}]] <a class="link-primary" th:href="@{/login}">[[#{login.loginButton}]]</a>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 <script crossorigin="anonymous"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

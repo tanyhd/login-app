@@ -5,19 +5,21 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet">
-
     <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
+<div th:replace="fragments/navbar :: navbar"></div>
 <div class="container">
     <div class="row mt-5">
         <div class="col-6 mx-auto">
-            <h1>Login Form</h1>
+            <h1>[[#{login.title}]]</h1>
             <div th:if="${param.error}">
-                <div class="alert alert-danger">Invalid Email or Password !!!</div>
+                <div class="alert alert-danger">[[#{login.alertError}]]</div>
             </div>
             <div th:if="${param.logout}">
-                <div class="alert alert-success">You have been logged out !!!</div>
+                <div class="alert alert-success">[[#{login.alertLogout}]]</div>
             </div>
             <form
                     class="form-horizontal"
@@ -26,25 +28,27 @@
                     th:action="@{/login}"
             >
                 <div class="mb-3">
-                    <label class="form-label" for="password">Email</label>
-                    <input class="form-control" id="username" name="username" placeholder="Enter email address"
+                    <label class="form-label" for="username">[[#{login.email}]]</label>
+                    <input class="form-control" id="username" name="username" th:placeholder="#{login.emailPlaceHolder}"
                            type="email">
                 </div>
                 <div class="mb-3">
-                    <label class="col-sm-2 col-form-label" for="password">Password</label>
-                    <input class="form-control" id="password" name="password" placeholder="Enter password"
+                    <label class="form-label" for="password">[[#{login.password}]]</label>
+                    <input class="form-control" id="password" name="password" th:placeholder="#{login.passwordPlaceHolder}"
                            type="password">
                 </div>
                 <div class="mb-3">
-                    <button class="btn btn-primary mb-3" type="submit">Login</button>
-                    or <a class="link-primary" th:href="@{/registration}">Register</a>
+                    <button class="btn btn-primary mb-3" type="submit">[[#{login.loginButton}]]</button>
+                    [[#{login.or}]] <a class="link-primary" th:href="@{/registration}">[[#{login.registerButton}]]</a>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script crossorigin="anonymous"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
