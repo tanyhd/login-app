@@ -44,7 +44,7 @@ public class LoginController {
 
         if (result.hasErrors()) {
             model.addAttribute("user", userDto);
-            return "/registration";
+            return "registration";
         }
 
         userService.saveUser(userDto);
