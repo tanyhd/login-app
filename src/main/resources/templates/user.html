@@ -18,7 +18,7 @@
             <h3>[[#{user.details}]]</h3>
             <div class="mt-2">[[#{user.name}]]<span sec:authentication="principal.name"/></div>
             <div class="mt-2">[[#{user.username}]]<span sec:authentication="principal.username"/></div>
-            <div class="mt-2">[[#{user.email}]]<span sec:authentication="principal.email"/></div>
+            <div class="mt-2">[[#{users.email}]]<span sec:authentication="principal.email"/></div>
             <div class="mt-2">[[#{user.role}]]<span sec:authentication="principal.authorities"/></div>
             <div class="mt-2"><a href="/manager/" sec:authorize="hasAnyAuthority('ROLE_MANAGER')">[[#{user.managerLink}]]</a></div>
             <div class="mt-5"><a class="link-primary" th:href="@{/logout}">[[#{user.logout}]]</a></div>

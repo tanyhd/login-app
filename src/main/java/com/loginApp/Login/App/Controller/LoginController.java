@@ -33,21 +33,21 @@ public class LoginController {
     public String registration(
             @Valid
             @ModelAttribute("user")
-            UserDto userDto,
+            UserDto user,
             BindingResult result,
             Model model) {
-        User existingUser = userService.findUserByEmail(userDto.getEmail());
+        User existingUser = userService.findUserByEmail(user.getEmail());
 
         if (existingUser != null) {
             result.rejectValue("email", null, "User already registered");
         }
 
         if (result.hasErrors()) {
-            model.addAttribute("user", userDto);
+            model.addAttribute("user", user);
             return "registration";
         }
 
-        userService.saveUser(userDto);
+        userService.saveUser(user);
         return "redirect:/registration?success";
     }
 

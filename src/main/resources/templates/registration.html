@@ -43,7 +43,8 @@
                     <label class="form-label" for="email">[[#{registration.email}]]</label>
                     <input class="form-control" id="email" name="email" type="email">
                     <p class="text-danger" th:errors="*{email}"
-                       th:if="${#fields.hasErrors('email')}"></p>
+                       th:if="${#fields.hasErrors('email')}">
+                    </p>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="role">[[#{registration.role}]]</label>
